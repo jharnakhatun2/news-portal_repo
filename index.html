@@ -6,6 +6,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome link -->
+    <script src="https://kit.fontawesome.com/bad28b431a.js" crossorigin="anonymous"></script>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>news TrustBD</title>
@@ -17,7 +19,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand" href="#"><span class="bg-primary text-white p-2 rounded">news</span> TrustBD</a>
                 <!-- toggle button -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
@@ -25,35 +27,90 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <!-- nav menu list -->
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <div class="collapse navbar-collapse " id="navbarTogglerDemo02">
+                    <ul class="navbar-nav px-4 ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item hover">
+                            <a class="nav-link active" aria-current="page" href="#">News</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link">Contact</a>
+                            <a class="nav-link " href="#">Blog</a>
                         </li>
                     </ul>
                     <!-- Search Input Field -->
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search here..." aria-label="Search">
-                        <button class="btn btn-outline-primary" type="submit">Search</button>
-                    </form>
+                    <div class="">
+                        <a href="#"><img src="images/user.png" class="avatar rounded-3 mw-100" alt="Avatar"></a>
+                    </div>
                 </div>
+            </div>
             </div>
         </nav>
     </header>
     <!-- main body -->
     <main>
-       
+        <section class="container ">
+            <!-- news-single-card -->
+            <div class="card p-3 my-5 shadow" style="max-width: 100%;">
+                <div class="row g-0">
+                    <div class="col-md-3">
+                        <img src="images/board-1.jpg" class="img-fluid rounded-start mw-100" alt="...">
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text text-secondary"> is a wider card with supporting text below as a natural
+                                lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text text-secondary"> is a wider card with supporting text below as a natural
+                                lead-in to additional content. This content is a little bit longer.</p>
+
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <!-- writer image,name and date -->
+                                    <div style=" width: 200px;" class="d-flex align-items-center ">
+                                        <div>
+                                            <img class="rounded-3 mw-100" src="images/user.png" alt="">
+                                        </div>
+
+                                        <div class="ms-3">
+                                            <p class="mb-0"><strong class="mb-0">Jane Cooper</strong></p>
+                                            <p class="mb-0">Jan 10, 2022</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <!-- View numbers -->
+                                    <div class="d-flex align-items-center">
+                                        <div><i class="fa-regular fa-eye"></i></div>
+                                        <h6 class="mb-0 ms-2 fw-bold">1.5M</h6>
+                                    </div>
+
+                                </div>
+                                <div class="col">
+                                    <!-- Rating star -->
+                                    <div class="d-flex">
+                                        <i class="fa-solid fa-star-half-stroke"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <!-- Next button -->
+                                    <div>
+                                        <i class="fa-solid fa-arrow-right-long text-primary fs-5"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
     <!-- footer section -->
     <footer>
         <div class="container-fluid text-center bg-dark py-3">
-            <p class="text-secondary fs-6 m-0">copyright@free.jharna2023</p>
+            <p class="text-secondary fs-6 mb-0">Copyright@2022 news TrustBD</p>
         </div>
     </footer>
     <!-- Option 1: Bootstrap Bundle with Popper -->
