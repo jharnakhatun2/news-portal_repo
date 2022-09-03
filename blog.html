@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome link -->
+    <script src="https://kit.fontawesome.com/bad28b431a.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>news TrustBD</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- header section -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><span class="bg-primary text-white p-2 rounded">news</span> TrustBD</a>
+                <!-- toggle button -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- nav menu list -->
+                <div class="collapse navbar-collapse " id="navbarTogglerDemo02">
+                    <ul class="navbar-nav px-4 ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item hover">
+                            <a class="nav-link active" aria-current="page" href="index.html">News</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="blog.html">Blog</a>
+                        </li>
+                    </ul>
+                    <!-- Search Input Field -->
+                    <div class="">
+                        <a href="#"><img src="images/user.png" class="avatar rounded-3 mw-100" alt="Avatar"></a>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </nav>
+    </header>
+    <!-- main body -->
+    <main>
+        <section class="container">
+            <div>
+                <div class="card p-3 my-5 shadow" style="max-width: 100%;">
+                    <div class="row gy-4">
+                        <div class="col-md-12">
+                            <div class="card-body">
+                                <h5 class="card-title">What's the difference among Var, Let, and Const?</h5>
+                                <p class="card-text text-secondary">
+                                    <strong>var :</strong><br>
+                                <pre>
+                                        var x = 1;
+
+                                        if (x === 1) {
+                                          var x = 2;
+                                        
+                                          console.log(x);
+                                          // expected output: 2
+                                        }
+                                        
+                                        console.log(x);
+                                        // expected output: 2
+                                        
+                                    </pre>
+                                var declarations are globally scoped or function/locally scoped. This means when var is
+                                declared within or outside a function, it is available and can be accessed within or
+                                outside that function block, also it is available for use in the whole window.
+                                </p>
+                                <p class="card-text text-secondary">
+                                    <strong>Let :</strong><br>
+                                <pre>
+                                        let x = 1;
+
+                                        if (x === 1) {
+                                          let x = 2;
+                                        
+                                          console.log(x);
+                                          // expected output: 2
+                                        }
+                                        
+                                        console.log(x);
+                                        // expected output: 1
+                                    </pre>
+                                if a variable declared in a block with 'let', it only available for use within that
+                                block. A variable declared with let can be updated within its scope.
+                                </p>
+                                <p class="card-text text-secondary">
+                                    <strong>const :</strong><br>
+                                <pre>
+                                        const number = 42;
+
+                                        try {
+                                          number = 99;
+                                        } catch (err) {
+                                          console.log(err);
+                                          // expected output: TypeError: invalid assignment to const `number'
+                                          // Note - error messages will vary depending on browser
+                                        }
+                                        
+                                        console.log(number);
+                                        // expected output: 42
+                                    </pre>
+                                Like let declarations, const declarations can only be accessed within the block they
+                                were declared.It cannot be updated or re-declared.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card p-3 my-5 shadow" style="max-width: 100%;">
+                    <div class="row gy-4">
+                        <div class="col-md-12">
+                            <div class="card-body">
+                                <h5 class="card-title">What's the difference between Regular Functions and Arrow
+                                    Functions?</h5>
+                                <p class="card-text text-secondary">
+                                    <strong>Regular Functions :</strong><br>
+                                <pre>
+                                    const square = function(x){
+                                        return (x*x);
+                                      };
+                                      console.log(square(9));
+                                    </pre>
+                                Regular functions created using function declarations or expressions are constructible
+                                and callable. Since regular functions are constructible, they can be called using the
+                                new keyword.Arguments objects are not available in arrow functions, but are available in
+                                regular functions.Unlike regular functions, arrow functions do not have their own this.
+                                </p>
+                                <p class="card-text text-secondary">
+                                    <strong>Arrow Functions :</strong><br>
+                                <pre>
+                                        const square = (x) => {
+                                            return (x*x);
+                                        };
+                                        console.log(square(9));
+                                        </pre>
+                                Arrow functions avoid a lot of code scenarios that can lead to misunderstandings, it
+                                makes our code clearer and more controllable.Curly brackets aren’t required if only one
+                                expression is present. Implicit return is useful for creating succinct one-line
+                                operations in map , filter , and other common array methods.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card p-3 my-5 shadow" style="max-width: 100%;">
+                    <div class="row gy-4">
+                        <div class="col-md-12">
+                            <div class="card-body">
+                                <h5 class="card-title">Why do we use backticks or Template strings in JavaScript?</h5>
+                                <p class="card-text text-secondary">
+                                    <strong>Template strings :</strong><br>
+                                <pre>
+                                        const longString = `At vero eos et  provident, similique sunt in deserunt animi.`
+                                    </pre>
+                                Template strings are a powerful feature of modern JavaScript released in ES6.This is
+                                much better than the alternative in old JavaScript where we had to concatenate a string.
+                                It allows us to create strings that are complex and contain dynamic elements. Another
+                                great thing that comes with template strings are tags. Tags are functions that take a
+                                string and the decomposed parts of the string as parameters and are great for converting
+                                strings to different entities.
+                                We can use it for Interpolating Variables and Expressions, Multiline Strings, Nesting
+                                Templates,Tagged Templates, Raw Strings.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- footer section -->
+    <footer>
+        <div class="container-fluid text-center bg-dark py-3">
+            <p class="text-secondary fs-6 mb-0">Copyright@2022 news TrustBD</p>
+        </div>
+    </footer>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/fetch.js"></script>
+</body>
+
+</html>
