@@ -20,8 +20,7 @@ const loadNewsCategory = () => {
 
 //Display all news category using api
 const displayNewsCategory = (categories) => {
-    const categoryContainer = document.getElementById('categoryList-display');
-
+     const categoryContainer = document.getElementById('categoryList-display');
     for (const category of categories) {
         console.log(category.category_name);
         const newsDiv = document.createElement('div');
@@ -30,7 +29,10 @@ const displayNewsCategory = (categories) => {
         <p role="button"><a onclick = "loadNewsCategoryID('${category.category_id}')">${category.category_name}<a></p>
         `;
         categoryContainer.appendChild(newsDiv);
+
+        
     }
+    
 }
 
 //loading data using all news category_id api 
@@ -40,11 +42,11 @@ const loadNewsCategoryID = (category_id) => {
     console.log(url);
     fetch(url)
         .then(response => response.json())
-        //   .then(data => console.log(data.data[0]))
         .then(data => displayNewsCategoryDetails(data.data))
 }
 
 //   Display all news data using by category_id
+
 const displayNewsCategoryDetails = news => {
     console.log(news);
     const newsContainer = document.getElementById('news-container');
@@ -109,7 +111,14 @@ const displayNewsCategoryDetails = news => {
 </div>
         `;
         newsContainer.appendChild(newsContainerDiv);
-    }
+    } 
+    const newsItemsCount = document.getElementById('news-items-count');
+    newsItemsCount.innerHTML=`
+    <div class= "bg-white p-3">
+    <h6><span class= "text-primary fs-5">${news.length}</span> items found for this category</h6>
+    </div>
+    `;
+    
 }
 
 // loading news details on modal
@@ -119,8 +128,8 @@ const loadNewsDetails = (id) =>{
     fetch(url)
         .then(response => response.json())
         .then(data => displayNewsDetails(data.data[0]))
-        // .then(data => console.log(data.data))
 }
+
 // Display news details on modal
 const displayNewsDetails = (newsModal) =>{
     const modalTitle = document.getElementById('newsDetailsLabel');
