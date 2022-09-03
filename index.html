@@ -30,10 +30,10 @@
                 <div class="collapse navbar-collapse " id="navbarTogglerDemo02">
                     <ul class="navbar-nav px-4 ms-auto mb-2 mb-lg-0">
                         <li class="nav-item hover">
-                            <a class="nav-link active" aria-current="page" href="#">News</a>
+                            <a class="nav-link active" aria-current="page" href="index.html">News</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="#">Blog</a>
+                            <a class="nav-link " href="blog.html">Blog</a>
                         </li>
                     </ul>
                     <!-- Search Input Field -->
@@ -54,6 +54,25 @@
             </div>
             <div id="news-items-count">
 
+            </div>
+        </section>
+        <!-- News Sort By View -->
+        <section class="container">
+            <div class="d-flex justify-content-between">
+                <div class="d-flex align-items-center">
+                    <h6 class="mb-0 me-2 bg-primary p-1">Sort By View:</h6>
+                    <div>
+                        <input type="text" name="city"  placeholder=" Default" list="newsDetailsLabel" class="text-center btn-outline-light ">
+                        <datalist id="newsDetailsLabel">
+                        <option value="443 M">
+                        <option value="123 M">
+                        </datalist>
+                    </div>
+                </div>
+                <div>
+                    <button class="btn bg-primary text-white">Today's Pick</button>
+                    <button class="btn btn-outline-primary ">Trending</button>
+                </div>
             </div>
         </section>
         <!-- All News Category Display -->
