@@ -61,6 +61,7 @@ const displayNewsCategoryDetails = news => {
         <div class="card-body">
             <h5 class="card-title">${newsId.title}</h5>
             <p class="card-text text-secondary">${newsId.details}</p>
+
             <div class="row align-items-center">
                 <div class="col">
                     <!-------------- writer image,name and date -------------->
@@ -71,7 +72,7 @@ const displayNewsCategoryDetails = news => {
 
                         <div class="ms-3">
                             <p class="mb-0"><strong class="mb-0">${newsId.author.name?newsId.author.name:'Mr.Writer'}</strong></p>
-                            <p class="mb-0">${newsId.author.published_date?newsId.author.published_date:'No bublished date'}</p>
+                            <p class="mb-0">${newsId.author.published_date?newsId.author.published_date:'No published date'}</p>
                         </div>
                     </div>
                 </div>
@@ -96,7 +97,9 @@ const displayNewsCategoryDetails = news => {
                 <div class="col">
                     <!-------------- Next button ------------->
                     <div>
-                        <i class="fa-solid fa-arrow-right-long text-primary fs-5"></i>
+                    <button onclick="loadNewsDetails('${newsId._id}')" class="btn" data-bs-toggle="modal" data-bs-target="#newsDetails">
+                        <img src="images/blue-arrow-right-png-6.png" alt="">
+                    </button>
                     </div>
                 </div>
             </div>
@@ -108,5 +111,38 @@ const displayNewsCategoryDetails = news => {
         newsContainer.appendChild(newsContainerDiv);
     }
 }
-displayNewsCategoryDetails('');
+
+// loading news details on modal
+const loadNewsDetails = (id) =>{
+    const url = `https://openapi.programming-hero.com/api/news/${id}`;
+    console.log(url);
+    fetch(url)
+        .then(response => response.json())
+        .then(data => displayNewsDetails(data.data[0]))
+        // .then(data => console.log(data.data))
+}
+// Display news details on modal
+const displayNewsDetails = (newsModal) =>{
+    const modalTitle = document.getElementById('newsDetailsLabel');
+    modalTitle.innerText = newsModal.title;
+    const newsDetails = document.getElementById('newsModalDetail');
+    newsDetails.innerHTML = `
+    <div>
+        <div class="mb-4">
+            <img src="${newsModal.thumbnail_url}" alt="...">
+        </div>
+        <div class="mb-3">
+            <p class="mb-0"><strong class="mb-0">Author Name: ${newsModal.author.name?newsModal.author.name:'Mr.Writer'}</strong></p>
+            <p class="mb-0">Published Date: ${newsModal.author.published_date?newsModal.author.published_date:'No published date'}</p>
+        </div>
+        <div >
+            <p class="card-text text-secondary">${newsModal.details}</p>
+        </div>
+    </div>
+    `;
+}
+
 loadNewsCategory();
+
+
+  
