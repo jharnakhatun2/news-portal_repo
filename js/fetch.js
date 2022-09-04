@@ -1,46 +1,42 @@
 // loading data using all news category api
-// const loadNewsCategory = async () => {
-//     try {
-//         const res = await fetch(`https://openapi.programming-hero.com/api/news/categories`);
-//         const data = await res.json();
-//         displayNewsCategory(data.data.news_category);
-//     }
-//     catch (error) {
-//         console.log(error);
-//     }
-// }
-
-const loadNewsCategory = () => {
-    const url = `https://openapi.programming-hero.com/api/news/categories`;
-    fetch(url)
-        .then(response => response.json())
-        .then(data => displayNewsCategory(data.data.news_category))
+const loadNewsCategory = async () => {
+    try {
+        const res = await fetch(`https://openapi.programming-hero.com/api/news/categories`);
+        const data = await res.json();
+        displayNewsCategory(data.data.news_category);
+    }
+    catch (error) {
+        console.log(error);
+    }
 }
 
 //Display all news category using api
 const displayNewsCategory = (categories) => {
-     const categoryContainer = document.getElementById('categoryList-display');
+    const categoryContainer = document.getElementById('categoryList-display');
     for (const category of categories) {
         const newsDiv = document.createElement('div');
         newsDiv.className = 'd-inline-block px-4 my-4 text-secondary ';
         newsDiv.innerHTML = `
         <p role="button"><a onclick = "loadNewsCategoryID('${category.category_id}')">${category.category_name}<a></p>
         `;
-        categoryContainer.appendChild(newsDiv);    
-    } 
+        categoryContainer.appendChild(newsDiv);
+    }
 }
 
 //loading data using all news category_id api 
-const loadNewsCategoryID = (category_id) => {
-    const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
-    console.log(url);
-    fetch(url)
-    .then(response => response.json())
-    .then(data => displayNewsCategoryDetails(data.data))
+const loadNewsCategoryID = async (category_id) => {
+    try {
+        const res = await fetch(`https://openapi.programming-hero.com/api/news/category/${category_id}`);
+        const data = await res.json();
+        displayNewsCategoryDetails(data.data);
+    }
+    catch (error) {
+        console.log(error);
+    }
 }
 
 //   Display all news data using by category_id
-const displayNewsCategoryDetails = news => { 
+const displayNewsCategoryDetails = news => {
     // start loading
     toggleSpinner(true);
     const newsContainer = document.getElementById('news-container');
@@ -67,8 +63,8 @@ const displayNewsCategoryDetails = news => {
                         </div>
 
                         <div class="ms-3">
-                            <p class="mb-0"><strong class="mb-0">${newsId.author.name?newsId.author.name:'Mr.Writer'}</strong></p>
-                            <p class="mb-0">${newsId.author.published_date?newsId.author.published_date:'No published date'}</p>
+                            <p class="mb-0"><strong class="mb-0">${newsId.author.name ? newsId.author.name : 'Mr.Writer'}</strong></p>
+                            <p class="mb-0">${newsId.author.published_date ? newsId.author.published_date : 'No published date'}</p>
                         </div>
                     </div>
                 </div>
@@ -76,7 +72,7 @@ const displayNewsCategoryDetails = news => {
                     <!-------------- View numbers -------------->
                     <div class="d-flex align-items-center">
                         <div><i class="fa-regular fa-eye"></i></div>
-                        <h6 class="mb-0 ms-2 fw-bold">${newsId.total_view?newsId.total_view:'0'}M</h6>
+                        <h6 class="mb-0 ms-2 fw-bold">${newsId.total_view ? newsId.total_view : '0'}M</h6>
                     </div>
 
                 </div>
@@ -105,11 +101,11 @@ const displayNewsCategoryDetails = news => {
 </div>
         `;
         newsContainer.appendChild(newsContainerDiv);
-        
-    } 
 
+    }
+    // count news post amount
     const newsItemsCount = document.getElementById('news-items-count');
-    newsItemsCount.innerHTML=`
+    newsItemsCount.innerHTML = `
     <div class= "bg-white p-2 mb-4">
     <h6><span class= "text-primary fs-5">${news.length}</span> items found for this category</h6>
     </div>
@@ -119,16 +115,19 @@ const displayNewsCategoryDetails = news => {
 }
 
 // loading news details on modal
-const loadNewsDetails = (id) =>{
-    const url = `https://openapi.programming-hero.com/api/news/${id}`;
-    console.log(url);
-    fetch(url)
-        .then(response => response.json())
-        .then(data => displayNewsDetails(data.data[0]))
+const loadNewsDetails = async (id) => {
+    try {
+        const res = await fetch(`https://openapi.programming-hero.com/api/news/${id}`);
+        const data = await res.json();
+        displayNewsDetails(data.data[0]);
+    }
+    catch (error) {
+        console.log(error);
+    }
 }
 
 // Display news details on modal
-const displayNewsDetails = (newsModal) =>{
+const displayNewsDetails = (newsModal) => {
     const modalTitle = document.getElementById('newsDetailsLabel');
     modalTitle.innerText = newsModal.title;
     const newsDetails = document.getElementById('newsModalDetail');
@@ -138,8 +137,8 @@ const displayNewsDetails = (newsModal) =>{
             <img src="${newsModal.thumbnail_url}" alt="...">
         </div>
         <div class="mb-3">
-            <p class="mb-0"><strong class="mb-0">Author Name: ${newsModal.author.name?newsModal.author.name:'Mr.Writer'}</strong></p>
-            <p class="mb-0">Published Date: ${newsModal.author.published_date?newsModal.author.published_date:'No published date'}</p>
+            <p class="mb-0"><strong class="mb-0">Author Name: ${newsModal.author.name ? newsModal.author.name : 'Mr.Writer'}</strong></p>
+            <p class="mb-0">Published Date: ${newsModal.author.published_date ? newsModal.author.published_date : 'No published date'}</p>
         </div>
         <div >
             <p class="card-text text-secondary">${newsModal.details}</p>
@@ -148,16 +147,16 @@ const displayNewsDetails = (newsModal) =>{
     `;
 }
 
-const toggleSpinner = isLoading =>{
+// loading spinner
+const toggleSpinner = isLoading => {
     const loaderSection = document.getElementById('loader');
-    if(isLoading){
+    if (isLoading) {
         loaderSection.classList.remove('d-none');
     }
-    else{
+    else {
         loaderSection.classList.add('d-none');
     }
 }
-
 
 loadNewsCategory();
 
