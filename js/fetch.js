@@ -14,7 +14,6 @@ const loadNewsCategory = () => {
     const url = `https://openapi.programming-hero.com/api/news/categories`;
     fetch(url)
         .then(response => response.json())
-        // .then(data => console.log(data.data.news_category[0].category_name))
         .then(data => displayNewsCategory(data.data.news_category))
 }
 
@@ -22,33 +21,28 @@ const loadNewsCategory = () => {
 const displayNewsCategory = (categories) => {
      const categoryContainer = document.getElementById('categoryList-display');
     for (const category of categories) {
-        console.log(category.category_name);
         const newsDiv = document.createElement('div');
         newsDiv.className = 'd-inline-block px-4 my-4 text-secondary ';
         newsDiv.innerHTML = `
         <p role="button"><a onclick = "loadNewsCategoryID('${category.category_id}')">${category.category_name}<a></p>
         `;
-        categoryContainer.appendChild(newsDiv);
-
-        
-    }
-    
+        categoryContainer.appendChild(newsDiv);    
+    } 
 }
 
 //loading data using all news category_id api 
 const loadNewsCategoryID = (category_id) => {
-
     const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
     console.log(url);
     fetch(url)
-        .then(response => response.json())
-        .then(data => displayNewsCategoryDetails(data.data))
+    .then(response => response.json())
+    .then(data => displayNewsCategoryDetails(data.data))
 }
 
 //   Display all news data using by category_id
-
-const displayNewsCategoryDetails = news => {
-    console.log(news);
+const displayNewsCategoryDetails = news => { 
+    // start loading
+    toggleSpinner(true);
     const newsContainer = document.getElementById('news-container');
     newsContainer.innerHTML = '';
     for (const newsId of news) {
@@ -56,14 +50,14 @@ const displayNewsCategoryDetails = news => {
         newsContainerDiv.innerHTML = `
         <div class="card p-3 my-5 shadow" style="max-width: 100%;">
         <div class="row gy-4">
-    <div class="col-md-3">
-        <img src="${newsId.thumbnail_url}" alt="...">
-    </div>
-    <div class="col-md-9">
-        <div class="card-body">
-            <h5 class="card-title">${newsId.title}</h5>
-            <p class="card-text text-secondary">${newsId.details}</p>
-
+            <div class="col-md-3">
+            <img src="${newsId.thumbnail_url}" alt="...">
+            </div>
+        <div class="col-md-9">
+            <div class="card-body">
+                <h5 class="card-title">${newsId.title}</h5>
+                <p class="card-text text-secondary">${newsId.details.slice(0, 500)}</p>
+            
             <div class="row align-items-center">
                 <div class="col">
                     <!-------------- writer image,name and date -------------->
@@ -111,14 +105,17 @@ const displayNewsCategoryDetails = news => {
 </div>
         `;
         newsContainer.appendChild(newsContainerDiv);
+        
     } 
+
     const newsItemsCount = document.getElementById('news-items-count');
     newsItemsCount.innerHTML=`
-    <div class= "bg-white p-3">
+    <div class= "bg-white p-2 mb-4">
     <h6><span class= "text-primary fs-5">${news.length}</span> items found for this category</h6>
     </div>
     `;
-    
+    //  stop loader
+    toggleSpinner(false);
 }
 
 // loading news details on modal
@@ -151,7 +148,20 @@ const displayNewsDetails = (newsModal) =>{
     `;
 }
 
+const toggleSpinner = isLoading =>{
+    const loaderSection = document.getElementById('loader');
+    if(isLoading){
+        loaderSection.classList.remove('d-none');
+    }
+    else{
+        loaderSection.classList.add('d-none');
+    }
+}
+
+
 loadNewsCategory();
 
 
-  
+
+
+
